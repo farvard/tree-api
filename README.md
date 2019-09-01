@@ -31,6 +31,7 @@ open [http://localhost:8080](http://localhost:8080)
 
 ![](screen.gif)
 
+(using [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) extention for google-chrome) 
 ### How to run tests
 ```sh
 mvn clean test
