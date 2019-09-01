@@ -104,10 +104,18 @@ public class TreeControllerTest {
 
     @Test
     public void changeParentOfValidNodeToValidNode() {
-        long nodeId = 5;
-        long newParentId = 19;
+        Long nodeId = 5L;
+        Long newParentId = 19L;
         this.api.patch().uri("/nodes/" + nodeId + "?parentId=" + newParentId)
               .exchange().expectStatus().isOk();
+        this.api.patch().uri("/nodes/" + nodeId + "?parentId=" + newParentId)
+              .exchange().expectStatus().isOk();
+        NodeResource node = this.api.get().uri("/nodes/" + nodeId).exchange()
+              .expectStatus().isOk().returnResult(NodeResource.class).getResponseBody().blockFirst();
+        NodeResource parent = this.api.get().uri("/nodes/" + newParentId).exchange()
+              .expectStatus().isOk().returnResult(NodeResource.class).getResponseBody().blockFirst();
+        Assert.assertSame(newParentId, node.getNode().getParent());
+        Assert.assertSame(parent.getNode().getHeight() + 1, node.getNode().getHeight());
     }
 
     @Test
