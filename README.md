@@ -35,6 +35,7 @@ open [http://localhost:8080](http://localhost:8080)
 ```sh
 mvn clean test
 # converage file: ./target/site/jacoco/index.htmldocker-compose up
+# be sure that 8080 and 6379 ports are not in use, before building or running testes.
 ``` 
 
 ### Tree representation in Redis
