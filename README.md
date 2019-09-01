@@ -74,7 +74,7 @@ H:4 &rarr; 2 \
 H:5 &rarr; 2
 
 ### ```.env``` config file
-By changing `.env` file you and re-running `docker-compose up` you can change startup tree.  
+By changing `.env` file and re-running `docker-compose up` you can change startup tree.  
 ##### config for random tree at startup
 ```config
 RANDOM_TREE=true
@@ -83,7 +83,7 @@ TREE_FILE_PATH=false
 ```
 ##### config for no tree at startup (use previous tree in redis)
 ```config
-RANDOM_TREE=true
+RANDOM_TREE=false
 TREE_FROM_FILE=false
 TREE_FILE_PATH=false
 ```
