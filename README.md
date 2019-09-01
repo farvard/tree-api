@@ -29,6 +29,7 @@ docker-compose up
 ```
 open [http://localhost:8080](http://localhost:8080)
 
+![](screen.gif)
 
 ### How to run tests
 ```sh
