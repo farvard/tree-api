@@ -16,7 +16,7 @@ A simple RESTful API for Tree manipulation
 | -----------| ------ | ------ | ----- |
 | GET | /nodes/{id} | one node | - | |
 | GET | /nodes/{id}/children | all children of node | - | 
-| PATCH | /nodes/{id} | change parent | parentId : new Parent Id |
+| PATCH | /nodes/{id} | change parent | parentId : new parent Id |
 
 ### How to build
 ```sh
@@ -33,7 +33,7 @@ open [http://localhost:8080](http://localhost:8080)
 ### How to run tests
 ```sh
 mvn clean test
-# converage file: ./target/site/jacoco/index.html
+# converage file: ./target/site/jacoco/index.htmldocker-compose up
 ``` 
 
 ### Tree representation in Redis
@@ -72,3 +72,46 @@ H:2 &rarr; 1 \
 H:3 &rarr; 1 \
 H:4 &rarr; 2 \
 H:5 &rarr; 2
+
+### ```.env``` config file
+By changing `.env` file you and re-running `docker-compose up` you can change startup tree.  
+##### config for random tree at startup
+```config
+RANDOM_TREE=true
+TREE_FROM_FILE=false
+TREE_FILE_PATH=false
+```
+##### config for no tree at startup (use previous tree in redis)
+```config
+RANDOM_TREE=true
+TREE_FROM_FILE=false
+TREE_FILE_PATH=false
+```
+##### config for tree from file
+```config
+RANDOM_TREE=false
+TREE_FROM_FILE=true
+TREE_FILE_PATH=</path/to/file.csv>
+```  
+example `file.csv`:
+```csv
+1 ,null
+2 ,1
+3 ,1
+4 ,1
+5 ,2
+6 ,2
+7 ,2
+8 ,2
+9 ,8
+10,8
+11,8
+12,8
+13,3
+14,3
+15,3
+16,3
+17,3
+18,10
+19,10
+```
