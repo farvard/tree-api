@@ -12,6 +12,8 @@ services:
       - 8080:8080
     links:
       - db:redis
+    volumes:
+      - tree-data:/data
   db:
     image: redis:alpine
     hostname: redis
@@ -23,3 +25,4 @@ services:
 
 volumes:
   redis-data:
+  tree-data:

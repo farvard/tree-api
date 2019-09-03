@@ -82,19 +82,19 @@ By changing `.env` file and re-running `docker-compose up` you can change startu
 ```config
 RANDOM_TREE=true
 TREE_FROM_FILE=false
-TREE_FILE_PATH=false
+TREE_FILE_PATH=null
 ```
 ##### config for no tree at startup (use previous tree in redis)
 ```config
 RANDOM_TREE=false
 TREE_FROM_FILE=false
-TREE_FILE_PATH=false
+TREE_FILE_PATH=null
 ```
 ##### config for tree from file
 ```config
 RANDOM_TREE=false
 TREE_FROM_FILE=true
-TREE_FILE_PATH=</path/to/file.csv>
+TREE_FILE_PATH=/data/<filename.csv>
 ```  
 example `file.csv`:
 ```csv
@@ -104,3 +104,4 @@ example `file.csv`:
 4 ,3
 5 ,3
 ```
+(copy your file to /var/lib/docker/volumes/tree-api_tree-data/_data)
