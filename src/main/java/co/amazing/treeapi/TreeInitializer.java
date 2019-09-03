@@ -6,8 +6,10 @@ import static co.amazing.treeapi.Constants.REDIS_HEIGHT_PREFIX;
 import static co.amazing.treeapi.Constants.REDIS_PARENT_PREFIX;
 import static co.amazing.treeapi.Constants.REDIS_ROOT;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -105,7 +107,14 @@ public class TreeInitializer {
     }
 
     private List<String[]> readCSV(String path) throws IOException {
-        List<String> lines = Files.readAllLines(new ClassPathResource(path).getFile().toPath());
+        Path realPath = null;
+        ClassPathResource resource = new ClassPathResource(path);
+        if (resource.exists()) {
+            realPath = resource.getFile().toPath();
+        } else {
+            realPath = new File(path).toPath();
+        }
+        List<String> lines = Files.readAllLines(realPath);
         return lines.stream().map(l -> l.split(",")).collect(Collectors.toList());
     }
 

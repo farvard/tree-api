@@ -3,6 +3,8 @@ services:
   app:
     environment:
       RANDOM_TREE:
+      TREE_FROM_FILE:
+      TREE_FILE_PATH:
       REDIS_HOST: redis
       REDIS_PORT: 6379
     build: .

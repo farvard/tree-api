@@ -41,7 +41,7 @@ public class TreeService {
             throw new NodeNotFoundException(nodeId);
         }
         Long newParenParentId = redis.<Long>getBucket(REDIS_PARENT_PREFIX + newParentId).get();
-        if (newParenParentId == null) {
+        if (newParenParentId == null && !newParentId.equals(root)) {
             throw new NodeNotFoundException(nodeId);
         }
         if (preParentId.equals(newParentId)) {
